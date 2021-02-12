@@ -6,8 +6,29 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      title: 'Todo List App'
+      title: 'Todo List: MVP ',
+      list: [
+        {
+          task: 'Organize Garage',
+          id: 1528817077286,
+          completed: false
+        },
+        {
+          task: 'Bake Cookies',
+          id: 1528817084358,
+          completed: false
+        }],
     }
+  }
+
+  addTodoTask = event => {
+
+    console.log(event.target.value)
+    this.setState({list: [{task: event.target.value}]})
+  } 
+
+  checkTodo = event => {
+    console.log(event.target.checked)
   }
 
   // design `App` to be the parent component of your application.
@@ -15,7 +36,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <TodoList data={this.state}/>
+        <TodoList
+         checked={this.checkTodo}
+         addTask={this.addTodoTask} 
+         data={this.state}/>
       </div>
     );
   }
