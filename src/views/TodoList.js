@@ -1,32 +1,19 @@
-import './Todo.css';
 import React from 'react';
-import Todo from './Todo.js';
-import Controls from './Controls.js'
+import TodoItem from './TodoItem.js';
 
-const TodoList = props => {
+
+
+const TodoList = (props) => {
 
     return(
-        <div className="container">
-            <h1> Todo List App </h1>
-            
-            <div className="form-container">
-
-                {props.data.list.map((item) => 
-                    <Todo 
-                        key={item.id} 
-                        getId={props.getId}
-                        checked={props.checked}  
-                        data={item}  />
-                )}
-
-                <form>
-                    {console.log(props.data.list)}
-
-                    <Controls />
-                </form>
-            </div>
+        <div className="todoItemContainer">
+            {props.data.map((item) => (
+                <TodoItem key={item.id} data={item} />
+            ))}
         </div>
     )
 }
+
+
 
 export default TodoList; 
