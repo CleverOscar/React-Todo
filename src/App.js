@@ -13,15 +13,15 @@ const list = [
         },
         {
           task: 'Bake Cookies',
-          id: 1528817084358,
+          id: 9999999999998,
           completed: false
         }, {
           task: 'Take Out The Trash',
-          id: 1528817084258,
+          id: 9928817084258,
           completed: false
         }, {
           task: 'Feed The Cats',
-          id: 1528815384358,
+          id: 6828815384358,
           completed: false
         }]
 
@@ -34,6 +34,37 @@ class App extends React.Component {
     }
   }
 
+  handleComplete = (id) => {
+   console.log('Clicked',id);
+       this.setState({
+         list: this.state.list.map((item) => {
+           if (id === item.id) {
+             return {
+               ...item,
+               completed: !item.completed
+             }
+           }
+           return item
+         })
+       })
+  }
+
+  handleInputChange = (e, newtask) => {
+    console.log(e.target.value);
+    e.preventDefault();
+    
+    const newTask = {
+      task: newtask,
+      id: Date.now(),
+      completed: false
+    };
+
+    this.setState({
+      list: [...this.state.list, newTask]
+    })
+
+  }
+
   render() {
     return (
       <div className="app">
@@ -41,7 +72,10 @@ class App extends React.Component {
           Todo List App
         </h1>
 
-        <TodoList data={this.state.list} />
+        <TodoList 
+          checkOff={this.handleComplete}
+          addTask={this.handleInputChange}
+          data={this.state.list} />
       </div>
     );
   }

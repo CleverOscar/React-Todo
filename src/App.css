@@ -4,12 +4,31 @@ html, body {
 
 .app {
     background-color: rgb(161, 29, 29);
+    padding-bottom: 50px;
 }
 
 .header {
     text-align: center;
 }
 
+
 .todoItemContainer {
-    border:  2px soild orange;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 35%;
+    border: 5px solid black;
+    margin: 0px auto;
+    margin-top: 50px;
+}
+
+.TodoButtons {
+    width: 65%;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
 }
